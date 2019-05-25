@@ -1,0 +1,6 @@
+<h2>This Journal:</h2>
+
+<h3><%= @journal.title %></h3>
+
+<%= link_to "Back", jour_index_path %>
+<%= link_to "Delete Journal", jour_path(@journal), method: :delete %>

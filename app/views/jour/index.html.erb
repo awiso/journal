@@ -3,7 +3,9 @@
 <ul>
     <% @journals.each do |j| %>
         <li>
-            <%= j.title %>
+            <%= link_to j.title, jour_path(j) %>
         </li>
     <% end %>
 </ul>
+
+<%= link_to "New Journal", new_jour_path %>

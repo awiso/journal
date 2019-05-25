@@ -3,21 +3,32 @@ class JourController < ApplicationController
         @journals = Jour.all
     end
 
-    def create
-    end
-
-    def new
-    end
-
     def show
+        @journal = Jour.find(params[:id])
+    end
+    
+    def new
+        @journal = Jour.new
     end
 
-    def edit
+    def create
+        @journal = Jour.new(journal_params)
+        if @journal.save 
+            redirect_to jour_path(@journal)
+        else
+            render :new
+        end
     end
 
-    def update
+    def destroy 
+        @journal = Jour.find(params[:id])
+        @journal.destroy
+        redirect_to jour_index_path
     end
 
-    def destroy
+    private
+
+    def journal_params
+        params.require(:jour).permit(:title)
     end
 end
