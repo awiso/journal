@@ -1,0 +1,2 @@
+module FutureLogHelper
+end
