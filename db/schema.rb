@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_230524) do
+ActiveRecord::Schema.define(version: 2019_05_25_235813) do
+
+  create_table "future_logs", force: :cascade do |t|
+    t.integer "jour_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jour_id"], name: "index_future_logs_on_jour_id"
+  end
 
   create_table "jours", force: :cascade do |t|
     t.string "title"
