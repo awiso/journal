@@ -4,3 +4,19 @@
 
 <%= link_to "Back", jour_index_path %>
 <%= link_to "Delete Journal", jour_path(@journal), method: :delete %>
+
+<h3> Future Log </h3>
+
+<ul>
+<% @future_log.future_log_entries.each do |e| %>
+    <li><%= e.content %></li>
+<% end %>
+</ul>
+
+
+<h4> May</h4>
+<h4> June</h4>
+<h4> July</h4>
+<h4> August</h4>
+<h4> September</h4>
+<h4> October</h4>

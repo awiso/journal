@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_235813) do
+ActiveRecord::Schema.define(version: 2019_05_30_003947) do
+
+  create_table "future_log_entries", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "future_log_entry_id"
+    t.integer "future_log_id"
+    t.index ["future_log_entry_id"], name: "index_future_log_entries_on_future_log_entry_id"
+    t.index ["future_log_id"], name: "index_future_log_entries_on_future_log_id"
+  end
 
   create_table "future_logs", force: :cascade do |t|
     t.integer "jour_id"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "future_log_entry_id"
+    t.index ["future_log_entry_id"], name: "index_future_logs_on_future_log_entry_id"
     t.index ["jour_id"], name: "index_future_logs_on_jour_id"
   end
 
@@ -24,6 +36,10 @@ ActiveRecord::Schema.define(version: 2019_05_25_235813) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "jour_id"
+    t.integer "future_log_id"
+    t.index ["future_log_id"], name: "index_jours_on_future_log_id"
+    t.index ["jour_id"], name: "index_jours_on_jour_id"
   end
 
 end

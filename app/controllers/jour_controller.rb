@@ -5,6 +5,7 @@ class JourController < ApplicationController
 
     def show
         @journal = Jour.find(params[:id])
+        @future_log = @journal.future_log
     end
     
     def new
